@@ -1,19 +1,17 @@
-package com.neotech.ccc.application.itest;
+package com.neotech.ccc.application;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import static com.neotech.ccc.application.itest.TestFilesUtils.readFile;
+import static com.neotech.ccc.application.TestFilesUtils.readFile;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
@@ -37,6 +35,14 @@ public class PhoneNumberDetectionTest {
     }
 
     @Test
+    void shouldReturnArrayOfCodes() {
+        testEndpoint(
+                "/jsons/exists/request.json",
+                "/jsons/exists/response.json"
+        );
+    }
+
+    @Test
     void shouldReturnValidationErrorWhenCodeNotFound() {
         testEndpoint(
                 "/jsons/notfound/request.json",
@@ -52,7 +58,7 @@ public class PhoneNumberDetectionTest {
         );
     }
 
-    private void testEndpoint(String pathToRequest, String pathToResponse){
+    private void testEndpoint(String pathToRequest, String pathToResponse) {
         var request = readFile(pathToRequest);
         var response = readFile(pathToResponse);
         webTestClient.post()

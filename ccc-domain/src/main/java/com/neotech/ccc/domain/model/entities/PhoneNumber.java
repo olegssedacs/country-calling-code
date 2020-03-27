@@ -1,6 +1,5 @@
 package com.neotech.ccc.domain.model.entities;
 
-import com.neotech.ccc.domain.model.utils.SensitiveInfoUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,13 +7,15 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import static com.neotech.ccc.domain.model.utils.SensitiveInfoUtils.hideLast4;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PhoneNumber {
 
     @NotNull
-    @Pattern(regexp = "[0-9]{1,15}")
+    @Pattern(regexp = "[1-9][0-9]{6,14}")
     private String value;
 
     @Override
@@ -22,7 +23,7 @@ public class PhoneNumber {
         return getMaskedValue();
     }
 
-    public String getMaskedValue(){
-        return value == null ? null : SensitiveInfoUtils.hideLast4(value);
+    public String getMaskedValue() {
+        return value == null ? null : hideLast4(value);
     }
 }

@@ -1,7 +1,7 @@
 apply from: "${rootDir}/gradle/java-project.gradle"
 
 dependencies {
-    implementation(
+    compile(
             project(":ccc-domain"),
             libs.springBootWebFlux,
             libs.jackson,
@@ -10,7 +10,7 @@ dependencies {
             libs.projectReactor,
     )
 
-    testImplementation(
+    testCompile(
             libs.springTest
     )
 }

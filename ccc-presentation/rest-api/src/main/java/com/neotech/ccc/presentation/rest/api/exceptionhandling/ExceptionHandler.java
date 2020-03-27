@@ -37,9 +37,9 @@ public class ExceptionHandler implements ErrorWebExceptionHandler {
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
         return Mono.fromSupplier(() -> exceptionConverter.convert(ex))
-                        .map(details -> convert(exchange, details))
-                        .doOnNext(error -> logException(error, ex))
-                        .flatMap(error -> write(error, exchange));
+                   .map(details -> convert(exchange, details))
+                   .doOnNext(error -> logException(error, ex))
+                   .flatMap(error -> write(error, exchange));
     }
 
     private ApiError convert(ServerWebExchange exchange, ApiErrorDetails details) {
@@ -57,14 +57,14 @@ public class ExceptionHandler implements ErrorWebExceptionHandler {
     }
 
     private void logException(ApiError error, Throwable ex) {
-        if (error.getErrorType() == ApiErrorType.INTERNAL_SERVER_ERROR){
+        if (error.getErrorType() == ApiErrorType.INTERNAL_SERVER_ERROR) {
             log.error("Internal error. Error response : {}", error, ex);
-        } else if (log.isDebugEnabled()){
+        } else if (log.isDebugEnabled()) {
             log.debug("Client error. Error response : {}", error, ex);
         }
     }
 
-    private Mono<Void> write(ApiError error, ServerWebExchange exchange){
+    private Mono<Void> write(ApiError error, ServerWebExchange exchange) {
         return serverResponseWriter.write(
                 error.getStatusDescription(),
                 RestResponse.withError(error),

@@ -2,7 +2,6 @@ package com.neotech.ccc.infrastructure.inmemory.cache;
 
 import com.neotech.ccc.domain.model.entities.CountryCallingCodesMap;
 import com.neotech.ccc.domain.model.repositories.CountryCallingCodesMapRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Repository
-@Slf4j
 public class CachingCountryCallingCodesMapRepository implements CountryCallingCodesMapRepository {
 
     private final CountryCallingCodesMapProvider countryCallingCodesMapProvider;

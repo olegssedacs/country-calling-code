@@ -8,9 +8,8 @@ targetCompatibility = "11"
 allure {
     version = "$versions.allure"
     configuration = 'testImplementation'
-    useJUnit5 {
-        version = "$versions.allure"
-    }
+    autoconfigure = true
+    aspectjweaver = true
 }
 
 dependencies {
@@ -26,7 +25,7 @@ dependencies {
     testAnnotationProcessor(
             libs.lombok
     )
-    testImplementation(
+    testCompile(
             libs.junitApi,
             libs.mockito,
             libs.hamcrest,
@@ -36,8 +35,7 @@ dependencies {
     testRuntimeOnly (
             libs.junitEngine,
             libs.junitAllure,
-            libs.jaxb,
-            libs.aspectj
+            libs.jaxb
     )
 }
 

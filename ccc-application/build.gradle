@@ -4,7 +4,7 @@ apply from: "${rootDir}/gradle/itest.gradle"
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-    implementation(
+    compile (
             project(":ccc-domain"),
             project(":ccc-infrastructure:wiki"),
             project(":ccc-infrastructure:in-memory-cache"),

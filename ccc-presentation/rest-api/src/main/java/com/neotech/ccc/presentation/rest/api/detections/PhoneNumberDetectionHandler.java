@@ -2,7 +2,7 @@ package com.neotech.ccc.presentation.rest.api.detections;
 
 import com.neotech.ccc.domain.model.entities.PhoneNumber;
 import com.neotech.ccc.domain.model.services.CountryCallingCodeService;
-import lombok.extern.slf4j.Slf4j;
+import com.neotech.ccc.presentation.rest.api.dto.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.HandlerFunction;
@@ -11,7 +11,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Service
-@Slf4j
 public class PhoneNumberDetectionHandler implements HandlerFunction<ServerResponse> {
 
     private final CountryCallingCodeService service;
@@ -27,6 +26,7 @@ public class PhoneNumberDetectionHandler implements HandlerFunction<ServerRespon
                       .map(PhoneNumberRequest::getPhoneNumber)
                       .onErrorReturn(new PhoneNumber())
                       .flatMap(service::findBy)
+                      .map(RestResponse::withData)
                       .flatMap(callingCode -> ServerResponse.ok().bodyValue(callingCode));
     }
 }

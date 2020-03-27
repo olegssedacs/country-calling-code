@@ -12,13 +12,13 @@ public class BeansConfig {
 
     @Bean
     @ConditionalOnMissingBean
-    public WebClient webClient(){
+    public WebClient webClient() {
         return WebClient.create();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public Clock clock(){
+    public Clock clock() {
         return Clock.systemDefaultZone();
     }
 

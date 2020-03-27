@@ -33,7 +33,7 @@ public class WikiWebClient {
                         .map(WikiParserResponse::getParse);
     }
 
-    private URI buildParseQuery(UriBuilder builder, WikiParseRequest request){
+    private URI buildParseQuery(UriBuilder builder, WikiParseRequest request) {
         return builder.queryParam("action", "parse")
                       .queryParam("format", "json")
                       .queryParam("page", request.getPage())
@@ -41,6 +41,4 @@ public class WikiWebClient {
                       .queryParam("prop", request.getFormat().name().toLowerCase())
                       .build();
     }
-
-
 }

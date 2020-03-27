@@ -1,4 +1,4 @@
-package com.neotech.ccc.application.itest.config;
+package com.neotech.ccc.application.config;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.springframework.beans.factory.DisposableBean;
@@ -11,7 +11,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
-import static com.neotech.ccc.application.itest.TestFilesUtils.readFile;
+import static com.neotech.ccc.application.TestFilesUtils.readFile;
 import static org.springframework.cloud.contract.wiremock.WireMockSpring.options;
 
 @Component
@@ -45,7 +45,7 @@ public class WikiMockServer implements DisposableBean {
     }
 
     private void mockTreeListResponse() {
-        String response = readFile("/wiki/tree-list-response.json");
+        var response = readFile("/wiki/tree-list-response.json");
         wireMockServer.stubFor(get(urlPathEqualTo(uri.getPath()))
                 .withQueryParam("action", equalTo("parse"))
                 .withQueryParam("format", equalTo("json"))
@@ -59,7 +59,7 @@ public class WikiMockServer implements DisposableBean {
     }
 
     private void mockAlphabeticalListResponse() {
-        String response = readFile("/wiki/alphabetical-listing-by-country-response.json");
+        var response = readFile("/wiki/alphabetical-listing-by-country-response.json");
         wireMockServer.stubFor(get(urlPathEqualTo(uri.getPath()))
                 .withQueryParam("action", equalTo("parse"))
                 .withQueryParam("format", equalTo("json"))

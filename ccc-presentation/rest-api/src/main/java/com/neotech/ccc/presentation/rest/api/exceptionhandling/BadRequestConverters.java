@@ -13,7 +13,7 @@ import org.springframework.web.server.UnsupportedMediaTypeStatusException;
 class BadRequestConverters {
 
     @Bean
-    public ResponseStatusExceptionConverter serverWebInputExceptionConverter(){
+    public ResponseStatusExceptionConverter serverWebInputExceptionConverter() {
         return () -> ServerWebInputException.class;
     }
 

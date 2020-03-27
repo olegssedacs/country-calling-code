@@ -5,7 +5,6 @@ import com.neotech.ccc.presentation.rest.api.dto.ApiErrorType;
 import com.neotech.ccc.presentation.rest.api.dto.ValidationError;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.DirectFieldBindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -21,7 +20,7 @@ class ValidationExceptionConverterTest {
 
     @Test
     void shouldConvertAllErrors() {
-        BindingResult bindingResult = new DirectFieldBindingResult(new Object(), "mock");
+        var bindingResult = new DirectFieldBindingResult(new Object(), "mock");
         bindingResult.addError(new FieldError("mock", "field1", "wrong value", false, null, null, "incorrect field"));
         bindingResult.addError(new ObjectError("mock", "wrong object"));
         var errorDetails = converter.convert(new ValidationException(bindingResult));

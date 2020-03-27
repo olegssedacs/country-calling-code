@@ -5,7 +5,7 @@ import lombok.Value;
 @Value
 class WikiCallingCode {
 
-    private String country;
-    private String code;
+    private final String country;
+    private final String code;
 
 }

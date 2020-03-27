@@ -90,13 +90,13 @@ class ExceptionHandlerTest {
                 () -> assertNotNull(restResponse.getError()),
                 () -> assertEquals(ApiError.class, restResponse.getError().getClass())
         );
-        var error = (ApiError)restResponse.getError();
+        var error = (ApiError) restResponse.getError();
         assertAll("Error",
                 () -> assertSame(errorType, error.getErrorType()),
                 () -> assertSame(status, error.getStatusDescription()),
                 () -> assertEquals(status.value(), error.getStatusCode()),
                 () -> assertSame(1L, error.getEpochMillisTimestamp()),
-                () -> assertEquals(ZonedDateTime.of(2020,3,27,12,59,0,0, ZoneOffset.UTC), error.getServerTimestamp()),
+                () -> assertEquals(ZonedDateTime.of(2020, 3, 27, 12, 59, 0, 0, ZoneOffset.UTC), error.getServerTimestamp()),
                 () -> assertEquals(ObjectUtils.getIdentityHexString(request), error.getRequestId()),
                 () -> assertSame(validation, error.getValidation()),
                 () -> assertEquals("/test", error.getPath()),

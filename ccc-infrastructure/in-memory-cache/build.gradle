@@ -1,7 +1,7 @@
 apply from: "${rootDir}/gradle/java-project.gradle"
 
 dependencies {
-    implementation(
+    compile(
             project(":ccc-domain"),
             libs.springContext,
             libs.springBootActuator,

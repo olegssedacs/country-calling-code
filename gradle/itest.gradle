@@ -1,10 +1,10 @@
 apply plugin: 'org.unbroken-dome.test-sets'
+apply plugin: 'io.qameta.allure'
+apply plugin: 'idea'
 
 testSets {
     itest
 }
-
-apply plugin: 'idea'
 idea {
     module.iml.withXml {
         def atts = it.asNode().component.content.sourceFolder
@@ -15,20 +15,18 @@ idea {
     }
 }
 
-apply plugin: 'io.qameta.allure'
-
 allure {
     version = "$versions.allure"
-    configuration = 'testImplementation'
-    useJUnit5 {
-        version = "$versions.allure"
-    }
+    configuration = 'itestImplementation'
+    autoconfigure = true
+    aspectjweaver = true
 }
 
 itest {
     testLogging {
         showStandardStreams = true
     }
+    useJUnitPlatform()
 }
 
 dependencies {
@@ -39,7 +37,7 @@ dependencies {
     itestAnnotationProcessor(
             libs.lombok
     )
-    itestImplementation(
+    itestCompile(
             libs.junitApi,
             libs.mockito,
             libs.hamcrest,
@@ -48,8 +46,6 @@ dependencies {
     )
     itestRuntimeOnly (
             libs.junitEngine,
-            libs.junitAllure,
-            libs.jaxb,
-            libs.aspectj
+            libs.jaxb
     )
 }

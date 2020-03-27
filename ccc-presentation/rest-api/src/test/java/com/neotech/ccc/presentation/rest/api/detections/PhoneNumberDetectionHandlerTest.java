@@ -4,7 +4,6 @@ import com.neotech.ccc.domain.model.entities.Country;
 import com.neotech.ccc.domain.model.entities.CountryCallingCode;
 import com.neotech.ccc.domain.model.entities.PhoneNumber;
 import com.neotech.ccc.domain.model.services.CountryCallingCodeService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,15 +12,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.codec.DecodingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import reactor.test.StepVerifierExtensionsKt;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -30,12 +26,6 @@ import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class PhoneNumberDetectionHandlerTest {
-
-    @Mock
-    private ServerWebExchange serverWebExchange;
-
-    @Mock
-    private ServerResponse.Context context;
 
     @Mock
     private ServerRequest serverRequest;
@@ -47,7 +37,6 @@ class PhoneNumberDetectionHandlerTest {
     private PhoneNumberDetectionHandler handler;
 
     private CountryCallingCode resultCode = new CountryCallingCode(371L, List.of(new Country("Latvia", "LV")));
-
 
     @Test
     void shouldInvokeServiceAndBuildResponse() {

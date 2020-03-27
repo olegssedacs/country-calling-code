@@ -49,7 +49,7 @@ public class WikiCountryRepository implements CountryRepository {
         return Flux.generate(
                 () -> COUNTRY_PATTERN.matcher(wikitext),
                 (matcher, sink) -> {
-                    if (matcher.find()){
+                    if (matcher.find()) {
                         Country country = convertOne(matcher);
                         sink.next(country);
                     } else {
@@ -60,7 +60,7 @@ public class WikiCountryRepository implements CountryRepository {
         );
     }
 
-    private Country convertOne(Matcher matcher){
+    private Country convertOne(Matcher matcher) {
         return new Country(
                 matcher.group("countryName"),
                 matcher.group("countryCode")

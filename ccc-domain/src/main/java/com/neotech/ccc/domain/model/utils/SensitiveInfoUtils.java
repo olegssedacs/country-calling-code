@@ -18,9 +18,9 @@ public class SensitiveInfoUtils {
             return str;
         }
         var sb = new StringBuilder(str.substring(0, padLeft));
-        for (int i = 0; i < str.length() - padLeft - padRight; i++) {
-            sb.append(replaceWith);
-        }
+        var mask = String.valueOf(replaceWith)
+                         .repeat(str.length() - padLeft - padRight);
+        sb.append(mask);
         return sb.append(str.substring(str.length() - padRight))
                  .toString();
     }

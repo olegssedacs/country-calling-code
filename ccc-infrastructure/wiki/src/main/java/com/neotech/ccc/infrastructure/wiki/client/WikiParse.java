@@ -18,15 +18,15 @@ public class WikiParse {
 
     private static final String KEY = "*";
 
+    @JsonProperty("text")
+    @JsonAlias("wikitext")
+    private Map<String, String> text = Collections.emptyMap();
+
     public static WikiParse withContent(String content) {
         return content == null
                ? new WikiParse()
                : new WikiParse(Collections.singletonMap(KEY, content));
     }
-
-    @JsonProperty("text")
-    @JsonAlias("wikitext")
-    private Map<String, String> text = Collections.emptyMap();
 
     @JsonIgnore
     public String getContent() {

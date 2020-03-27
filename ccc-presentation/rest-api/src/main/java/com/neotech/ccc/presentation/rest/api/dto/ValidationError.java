@@ -1,6 +1,5 @@
 package com.neotech.ccc.presentation.rest.api.dto;
 
-import lombok.Data;
 import lombok.Value;
 
 @Value

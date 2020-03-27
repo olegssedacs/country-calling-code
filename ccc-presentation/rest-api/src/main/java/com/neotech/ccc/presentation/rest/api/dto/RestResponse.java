@@ -14,11 +14,11 @@ public class RestResponse {
     private final Object data;
     private final Object error;
 
-    public static RestResponse withData(@NonNull Object data){
+    public static RestResponse withData(@NonNull Object data) {
         return new RestResponse(data, null);
     }
 
-    public static RestResponse withError(@NonNull Object error){
+    public static RestResponse withError(@NonNull Object error) {
         return new RestResponse(null, error);
     }
 

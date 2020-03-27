@@ -3,7 +3,6 @@ package com.neotech.ccc.presentation.rest.api.dto;
 import lombok.Value;
 import org.springframework.http.HttpStatus;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 

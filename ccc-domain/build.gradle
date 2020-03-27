@@ -2,7 +2,7 @@ apply from: "${rootDir}/gradle/java-project.gradle"
 
 dependencies {
 
-    implementation(
+    compile(
             libs.validationApi,
             libs.projectReactor,
             libs.springContext

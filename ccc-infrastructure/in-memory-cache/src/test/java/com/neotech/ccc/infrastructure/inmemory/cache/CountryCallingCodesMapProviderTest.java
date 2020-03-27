@@ -64,11 +64,11 @@ class CountryCallingCodesMapProviderTest {
                     .verify();
     }
 
-    private Flux<CountryCallingCode> codesStream(int failCount){
+    private Flux<CountryCallingCode> codesStream(int failCount) {
         return Flux.generate(
                 AtomicLong::new,
                 (state, sink) -> {
-                    if (state.incrementAndGet() < failCount){
+                    if (state.incrementAndGet() < failCount) {
                         sink.error(new RuntimeException(state.toString()));
                     } else {
                         sink.next(code);

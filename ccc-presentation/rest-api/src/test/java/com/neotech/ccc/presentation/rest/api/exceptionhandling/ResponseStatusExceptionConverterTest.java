@@ -4,7 +4,6 @@ import com.neotech.ccc.presentation.rest.api.dto.ApiErrorType;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.server.MethodNotAllowedException;
 
 import java.util.List;

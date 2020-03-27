@@ -7,11 +7,8 @@ import com.neotech.ccc.domain.model.utils.validation.ReactiveValidator;
 import com.neotech.ccc.domain.model.utils.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.DirectFieldBindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -44,7 +41,7 @@ public class CountryCallingCodeService {
     private Mono<CountryCallingCode> notFound(PhoneNumber phoneNumber) {
         return Mono.fromSupplier(() -> constructError(phoneNumber))
                    .map(error -> {
-                       BindingResult result = new DirectFieldBindingResult(phoneNumber, VALIDATED_OBJECT_NAME);
+                       var result = new DirectFieldBindingResult(phoneNumber, VALIDATED_OBJECT_NAME);
                        result.addError(error);
                        return result;
                    })
@@ -52,7 +49,7 @@ public class CountryCallingCodeService {
                    .flatMap(Mono::error);
     }
 
-    private FieldError constructError(PhoneNumber phoneNumber){
+    private FieldError constructError(PhoneNumber phoneNumber) {
         return new FieldError(
                 VALIDATED_OBJECT_NAME,
                 "value",

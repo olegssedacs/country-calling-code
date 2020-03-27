@@ -17,7 +17,7 @@ import reactor.test.StepVerifier;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
@@ -70,7 +70,7 @@ class CountryCallingCodeServiceTest {
         StepVerifier.create(service.findBy(phoneNumber))
                     .verifyErrorSatisfies(t -> {
                         assertEquals(ValidationException.class, t.getClass());
-                        var bindingResult = ((ValidationException)t).getBindingResult();
+                        var bindingResult = ((ValidationException) t).getBindingResult();
                         assertEquals(1, bindingResult.getFieldErrorCount());
                         assertEquals(0, bindingResult.getGlobalErrorCount());
                         var error = bindingResult.getFieldError();

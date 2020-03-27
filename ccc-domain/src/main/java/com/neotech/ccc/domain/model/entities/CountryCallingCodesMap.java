@@ -3,14 +3,11 @@ package com.neotech.ccc.domain.model.entities;
 import lombok.NonNull;
 
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
-import static java.util.Collections.emptyMap;
 import static java.util.Comparator.reverseOrder;
 import static java.util.stream.Collectors.toList;
 
@@ -26,15 +23,15 @@ import static java.util.stream.Collectors.toList;
  */
 public class CountryCallingCodesMap {
 
-    private int size = 0;
     private final Map<Character, Map<String, CountryCallingCode>> indexedMaps;
+    private int size = 0;
 
     public CountryCallingCodesMap(Collection<CountryCallingCode> codes) {
         this.indexedMaps = new HashMap<>();
         codes.forEach(this::add);
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
@@ -53,8 +50,8 @@ public class CountryCallingCodesMap {
         var code = String.valueOf(callingCode.getCallingCode());
         var tree = getOrCreateNestedTree(code.charAt(0));
         var oldValue = tree.put(code, callingCode);
-        if (oldValue == null){
-            size++;
+        if (oldValue == null) {
+            this.size++;
         }
     }
 

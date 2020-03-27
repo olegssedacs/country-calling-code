@@ -1,0 +1,9 @@
+rootProject.name = 'country-calling-code'
+include 'front'
+include 'ccc-domain'
+include 'ccc-infrastructure:wiki'
+include 'ccc-presentation:rest-api'
+include 'ccc-application'
+include 'ccc-infrastructure:in-memory-cache'
+findProject(':ccc-infrastructure:in-memory-cache')?.name = 'in-memory-cache'
+

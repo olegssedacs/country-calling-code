@@ -1,0 +1,10 @@
+apply from: "${rootDir}/gradle/java-project.gradle"
+
+dependencies {
+
+    implementation(
+            libs.validationApi,
+            libs.projectReactor,
+            libs.springContext
+    )
+}

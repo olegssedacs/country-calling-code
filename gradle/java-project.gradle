@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: "io.qameta.allure"
+apply from: "${rootDir}/gradle/dependencies.gradle"
+
+sourceCompatibility = "11"
+targetCompatibility = "11"
+
+allure {
+    version = "$versions.allure"
+    configuration = 'testImplementation'
+    useJUnit5 {
+        version = "$versions.allure"
+    }
+}
+
+dependencies {
+    compileOnly(
+            libs.lombok
+    )
+    annotationProcessor(
+            libs.lombok
+    )
+    testCompileOnly(
+            libs.lombok
+    )
+    testAnnotationProcessor(
+            libs.lombok
+    )
+    testImplementation(
+            libs.junitApi,
+            libs.mockito,
+            libs.hamcrest,
+            libs.projectTest,
+            libs.springTest
+    )
+    testRuntimeOnly (
+            libs.junitEngine,
+            libs.junitAllure,
+            libs.jaxb,
+            libs.aspectj
+    )
+}
+
+test {
+    useJUnitPlatform()
+}

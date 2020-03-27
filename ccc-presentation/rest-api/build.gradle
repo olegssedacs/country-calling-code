@@ -1,0 +1,16 @@
+apply from: "${rootDir}/gradle/java-project.gradle"
+
+dependencies {
+    implementation(
+            project(":ccc-domain"),
+            libs.springBootWebFlux,
+            libs.jackson,
+            libs.springContext,
+            libs.logging,
+            libs.projectReactor,
+    )
+
+    testImplementation(
+            libs.springTest
+    )
+}

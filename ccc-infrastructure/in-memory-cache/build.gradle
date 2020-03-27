@@ -1,0 +1,11 @@
+apply from: "${rootDir}/gradle/java-project.gradle"
+
+dependencies {
+    implementation(
+            project(":ccc-domain"),
+            libs.springContext,
+            libs.springBootActuator,
+            libs.logging,
+            libs.projectReactor,
+    )
+}

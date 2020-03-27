@@ -1,0 +1,18 @@
+{
+  "error": {
+    "serverTimestamp": "2020-03-27T12:59:00Z",
+    "epochMillisTimestamp": 1585328252447,
+    "path": "/phone-numbers/detections",
+    "statusCode": 400,
+    "statusDescription": "BAD_REQUEST",
+    "errorType": "VALIDATION_ERROR",
+    "message": "Validation failed",
+    "validation": [
+      {
+        "objectName": "phoneNumber",
+        "message": "Phone number does not belong to any country",
+        "rejectedValue": "42999999"
+      }
+    ]
+  }
+}

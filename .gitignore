@@ -1,0 +1,35 @@
+## Log files
+.log
+*.log
+
+## Gradle cache and binaries
+.gradle/
+build/
+dist/
+target/
+
+## JetBrains IDEs: IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+**/out/production
+**/out/test
+**/out/itest
+
+## Eclipse project files
+.classpath
+.project
+.settings/
+bin/
+
+## Generated files
+*.*~
+*.retry
+.allure/
+generated/
+classes/
+~/
+
+## Temp folders
+*@tmp

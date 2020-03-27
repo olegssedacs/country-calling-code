@@ -1,0 +1,67 @@
+ext {
+
+    versions = [
+            springBoot    : "2.2.5.RELEASE",
+            spring        : "5.2.5.RELEASE",
+            projectReactor: "3.3.3.RELEASE",
+            junitJupiter  : "5.6.1",
+            junit         : "4.13",
+            allurePlugin  : "2.8.1",
+            allure        : "2.7.0",
+            allureJunit5  : "2.13.2",
+            mockito       : "3.3.3",
+            hamcrest      : "2.2",
+            lombok        : "1.18.12",
+            jsoup         : "1.13.1",
+            validationApi : "2.0.2",
+            jackson       : "2.10.3",
+            slf4jApi      : "1.7.30",
+            logback       : "1.2.3",
+            jakartaXml    : "2.3.3",
+            jaxb          : "2.3.2",
+            aspectj       : "1.9.5",
+            testSet      : "2.1.1",
+            springCloud : "2.2.2.RELEASE",
+    ]
+
+    libs = [
+            springBootWebFlux : "org.springframework.boot:spring-boot-starter-webflux:$versions.springBoot",
+            springBootActuator: "org.springframework.boot:spring-boot-starter-actuator:$versions.springBoot",
+            springBootCache   : "org.springframework.boot:spring-boot-starter-cache:$versions.springBoot",
+            springWebFlux     : "org.springframework:spring-webflux:$versions.spring",
+            springContext     : "org.springframework:spring-context:$versions.spring",
+            projectReactor    : [
+                    "io.projectreactor:reactor-core:$versions.projectReactor",
+                    "io.projectreactor.addons:reactor-extra:$versions.projectReactor",
+            ],
+            springTest        : "org.springframework.boot:spring-boot-starter-test:$versions.springBoot",
+            projectTest       : "io.projectreactor:reactor-test:$versions.projectReactor",
+            junitApi          : "org.junit.jupiter:junit-jupiter-api:$versions.junitJupiter",
+            junitEngine       : "org.junit.jupiter:junit-jupiter-engine:$versions.junitJupiter",
+            junitAllure       : "io.qameta.allure:allure-junit5:$versions.allureJunit5",
+            mockito           : "org.mockito:mockito-junit-jupiter:$versions.mockito",
+            hamcrest          : "org.hamcrest:hamcrest:$versions.hamcrest",
+            lombok            : "org.projectlombok:lombok:$versions.lombok",
+            jsoup             : "org.jsoup:jsoup:$versions.jsoup",
+            validationApi     : "jakarta.validation:jakarta.validation-api:$versions.validationApi",
+            jackson           : [
+                    "com.fasterxml.jackson.core:jackson-core:$versions.jackson",
+                    "com.fasterxml.jackson.core:jackson-databind:$versions.jackson",
+                    "com.fasterxml.jackson.core:jackson-annotations:$versions.jackson",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$versions.jackson",
+            ],
+            logging           : [
+                    "org.slf4j:slf4j-api:$versions.slf4jApi",
+                    "ch.qos.logback:logback-classic:$versions.logback",
+            ],
+            jaxb              : [
+                    "jakarta.xml.bind:jakarta.xml.bind-api:$versions.jakartaXml",
+                    "org.glassfish.jaxb:jaxb-runtime:$versions.jaxb"
+            ],
+            aspectj           : "org.aspectj:aspectjweaver:$versions.aspectj",
+            wireMock : "org.springframework.cloud:spring-cloud-contract-wiremock:$versions.springCloud"
+
+
+
+    ]
+}

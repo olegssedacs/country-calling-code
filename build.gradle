@@ -1,0 +1,74 @@
+buildscript {
+    apply from: "${rootDir}/gradle/dependencies.gradle"
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$versions.springBoot"
+        classpath "io.qameta.allure:allure-gradle:$versions.allurePlugin"
+        classpath "org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:$versions.testSet"
+    }
+}
+
+apply plugin: "idea"
+apply plugin: "io.qameta.allure"
+apply from: "${rootDir}/gradle/dependencies.gradle"
+
+allure {
+    version = "$versions.allure"
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+}
+
+idea {
+    project {
+        languageLevel = "1.11"
+    }
+}
+
+ext.getAllAllureReports = {
+    def resultsDirs = []
+    subprojects.each {
+        def result = file("${it.buildDir}/allure-results")
+        if (result.exists()){
+            resultsDirs.add(result)
+        }
+    }
+    return resultsDirs
+}
+
+task cleanAggregatedAllureReport() {
+    doLast {
+        def report = "${rootProject.buildDir}/reports/allure-report"
+        println("Deleting old aggregated report : " + report)
+        delete report
+    }
+}
+
+task allureAggregateReport(type: io.qameta.allure.gradle.task.AllureReport) {
+    doFirst {
+        resultsDirs = getAllAllureReports()
+        println("Aggregating reports from : " + resultsDirs)
+    }
+}
+
+allureAggregateReport.dependsOn cleanAggregatedAllureReport
+
+// aggregate reports for local serving
+task allureServeReport(type: io.qameta.allure.gradle.task.AllureServe){
+    doFirst {
+        resultsDirs = getAllAllureReports()
+        println("Serving reports from : " + resultsDirs)
+        println("Tests : " + tasks)
+    }
+}

@@ -1,0 +1,24 @@
+wiki:
+  rest-api:
+    url: http://localhost:34000/w/api.php
+    country-calling-codes:
+      page: List_of_country_calling_codes
+      section-ids:
+        tree-list: 1
+        alphabetical-listing-by-country: 11
+spring:
+  cache:
+    in-memory:
+      country-calling-codes-map:
+        reload:
+          retry-max-attemts: 1
+          retry-delay: 10s
+  http:
+    global-timeout: 5s
+    internal-error-message: Some shit happened. Please contact with customer.support@neotech.com for futher details
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+    serialization:
+      fail-on-empty-beans: false

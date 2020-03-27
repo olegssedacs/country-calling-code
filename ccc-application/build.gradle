@@ -1,0 +1,14 @@
+apply from: "${rootDir}/gradle/java-project.gradle"
+apply from: "${rootDir}/gradle/itest.gradle"
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation(
+            project(":ccc-domain"),
+            project(":ccc-infrastructure:wiki"),
+            project(":ccc-infrastructure:in-memory-cache"),
+            project(":ccc-presentation:rest-api"),
+            libs.springBootWebFlux
+    )
+}

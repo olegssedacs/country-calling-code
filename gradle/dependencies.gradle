@@ -20,8 +20,9 @@ ext {
             jakartaXml    : "2.3.3",
             jaxb          : "2.3.2",
             aspectj       : "1.9.5",
-            testSet      : "2.1.1",
-            springCloud : "2.2.2.RELEASE",
+            testSet       : "2.1.1",
+            springCloud   : "2.2.2.RELEASE",
+            frontend      : "1.4.1"
     ]
 
     libs = [
@@ -59,8 +60,7 @@ ext {
                     "org.glassfish.jaxb:jaxb-runtime:$versions.jaxb"
             ],
             aspectj           : "org.aspectj:aspectjweaver:$versions.aspectj",
-            wireMock : "org.springframework.cloud:spring-cloud-contract-wiremock:$versions.springCloud"
-
+            wireMock          : "org.springframework.cloud:spring-cloud-contract-wiremock:$versions.springCloud"
 
 
     ]

@@ -16,9 +16,10 @@ spring:
   http:
     global-timeout: 5s
     internal-error-message: Some shit happened. Please contact with customer.support@neotech.com for futher details
-
+    enable-static-content: true
   jackson:
     deserialization:
       fail-on-unknown-properties: false
     serialization:
       fail-on-empty-beans: false
+

@@ -15,7 +15,7 @@ import static com.neotech.ccc.domain.model.utils.SensitiveInfoUtils.hideLast4;
 public class PhoneNumber {
 
     @NotNull
-    @Pattern(regexp = "[1-9][0-9]{6,14}")
+    @Pattern(regexp = "[1-9][0-9]{6,14}", message = "must begin with 1-9 and have a length of 7-15 digits")
     private String value;
 
     @Override

@@ -23,18 +23,19 @@ class CountryCallingCodesMapTest {
     private CountryCallingCode yt = new CountryCallingCode(262269L, singletonList(new Country("Mayotte", "YT")));
     private CountryCallingCode uk = new CountryCallingCode(44L, singletonList(new Country("United Kingdom", "UK")));
     private CountryCallingCode im = new CountryCallingCode(447524L, singletonList(new Country("Isle of Man", "IM")));
+    private CountryCallingCode pl = new CountryCallingCode(48L, singletonList(new Country("Poland", "PL")));
     private CountryCallingCode ru = new CountryCallingCode(7L, singletonList(new Country("Russia", "RU")));
     private CountryCallingCode kz = new CountryCallingCode(76L, singletonList(new Country("Kazakhstan", "KZ")));
 
     @BeforeEach
     void setUp() {
-        List<CountryCallingCode> codes = asList(caUs, vg, gd, eg, yt, uk, im, ru, kz);
+        List<CountryCallingCode> codes = asList(caUs, vg, gd, eg, yt, uk, im, ru, kz, pl);
         codesMap = new CountryCallingCodesMap(codes);
     }
 
     @Test
     void verifySize() {
-        assertEquals(9, codesMap.size());
+        assertEquals(10, codesMap.size());
     }
 
     @Test
@@ -76,6 +77,7 @@ class CountryCallingCodesMapTest {
     @Test
     void test4xx() {
         assertAbsent("400111111");
+        assertAbsent("420984484484");
         assertAbsent("451111111");
         assertPresent("44011111", uk);
         assertPresent("44752311", uk);

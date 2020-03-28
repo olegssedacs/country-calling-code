@@ -3,6 +3,7 @@ apply from: "${rootDir}/gradle/itest.gradle"
 
 apply plugin: 'org.springframework.boot'
 
+
 dependencies {
     compile (
             project(":ccc-domain"),
@@ -12,3 +13,23 @@ dependencies {
             libs.springBootWebFlux
     )
 }
+
+tasks.register('processFrontendResources', Copy) {
+    description 'Process frontend resources'
+    from "${project.rootProject.projectDir}/ccc-presentation/js-frontend/build/resources"
+    into "${project.projectDir}/build/resources/main/"
+}
+
+
+tasks.named('assemble').configure{
+    dependsOn tasks.named('processFrontendResources')
+}
+
+tasks.named('processResources').configure {
+    dependsOn tasks.named('processFrontendResources')
+}
+
+tasks.named('bootJar').configure {
+    dependsOn tasks.named('processFrontendResources')
+}
+

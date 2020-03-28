@@ -3,12 +3,12 @@ package com.neotech.ccc.domain.model.entities;
 import lombok.NonNull;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
-import static java.util.Comparator.reverseOrder;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -40,7 +40,7 @@ public class CountryCallingCodesMap {
         return indexedMaps.getOrDefault(phone.charAt(0), Map.of())
                           .entrySet()
                           .stream()
-                          .filter(entry -> phone.contains(entry.getKey()))
+                          .filter(entry -> phone.startsWith(entry.getKey()))
                           .findFirst()
                           .map(Map.Entry::getValue)
                           .map(this::copyValue);
@@ -59,7 +59,7 @@ public class CountryCallingCodesMap {
         if (indexedMaps.containsKey(firstDigit)) {
             return indexedMaps.get(firstDigit);
         }
-        indexedMaps.put(firstDigit, new TreeMap<>(reverseOrder()));
+        indexedMaps.put(firstDigit, new TreeMap<>(new CodeComparator().reversed()));
         return indexedMaps.get(firstDigit);
     }
 
@@ -69,5 +69,16 @@ public class CountryCallingCodesMap {
                             .map(country -> new Country(country.getName(), country.getAlpha2Code()))
                             .collect(toList());
         return new CountryCallingCode(code.getCallingCode(), countries);
+    }
+
+    private static class CodeComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String o1, String o2) {
+            int result = Integer.compare(o1.length(), o2.length());
+            return result != 0
+                   ? result
+                   : o1.compareTo(o2);
+        }
     }
 }

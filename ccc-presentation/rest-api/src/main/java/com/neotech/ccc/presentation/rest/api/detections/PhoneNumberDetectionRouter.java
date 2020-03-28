@@ -15,7 +15,7 @@ public class PhoneNumberDetectionRouter {
 
     @Bean
     public RouterFunction<ServerResponse> phoneNumberRouter(PhoneNumberDetectionHandler handler) {
-        return route(POST("/phone-numbers/detections"), handler);
+        return route(POST("/v1/phone-numbers/detections"), handler);
     }
 
 }

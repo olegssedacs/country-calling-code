@@ -62,7 +62,7 @@ public class PhoneNumberDetectionTest {
         var request = readFile(pathToRequest);
         var response = readFile(pathToResponse);
         webTestClient.post()
-                     .uri("/phone-numbers/detections")
+                     .uri("/v1/phone-numbers/detections")
                      .bodyValue(request)
                      .exchange()
                      .expectBody()

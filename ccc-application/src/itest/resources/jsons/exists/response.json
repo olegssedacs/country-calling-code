@@ -1,13 +1,15 @@
 {
-  "callingCode": 1,
-  "countries": [
-    {
-      "name": "Canada",
-      "alpha2Code": "CA"
-    },
-    {
-      "name": "United States",
-      "alpha2Code": "US"
-    }
-  ]
+  "data": {
+    "callingCode": 1,
+    "countries": [
+      {
+        "name": "Canada",
+        "alpha2Code": "CA"
+      },
+      {
+        "name": "United States",
+        "alpha2Code": "US"
+      }
+    ]
+  }
 }

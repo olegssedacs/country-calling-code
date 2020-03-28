@@ -1,0 +1,7 @@
+apply plugin: "org.siouan.frontend"
+
+frontend {
+    nodeVersion = '12.16.1'
+    installScript = 'install'
+    assembleScript = 'run build'
+}

@@ -17,11 +17,11 @@
 ## Modules
 - domain (entities, business logic, interfaces)
 - infrastructure
--- wiki (imeplentation of data repositories)
--- in-memory-cache (imeplentation of data repositories)
+    - wiki (imeplentation of data repositories)
+    - in-memory-cache (imeplentation of data repositories)
 - presentation
--- rest-api (RESTfull application interface)
--- js-frontend (javascript web application)
+    - rest-api (RESTfull application interface)
+    - js-frontend (javascript web application)
 - application (combination of domain + implementations + APIs)
 ## API principles 
 - Versioned API ( url-based )

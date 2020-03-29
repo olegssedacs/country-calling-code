@@ -20,7 +20,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 public class StaticResourcesRouterFunction {
 
     @Bean
-    public RouterFunction<ServerResponse> index(@Value("classpath:/static/index.html") Resource html) {
+    public RouterFunction<ServerResponse> index(@Value("classpath:/index.html") Resource html) {
         return route(GET("/"), request -> ok().contentType(MediaType.TEXT_HTML).bodyValue(html));
     }
 
